@@ -11,13 +11,7 @@ public class EnrollCtrl {
         Map<Term, Map<Course, Double>> transcript = s.getTranscript();
         for (CSE o : courses) {
             // check if student passed the course
-            for (Map.Entry<Term, Map<Course, Double>> tr : transcript.entrySet()) {
-                for (Map.Entry<Course, Double> r : tr.getValue().entrySet()) {
-                    if (r.getKey().equals(o.getCourse()) && s.isPassed(tr.getKey(), r.getKey()))
-                        throw new EnrollmentRulesViolationException(String.format("The student has already passed %s", o.getCourse().getName()));
-                }
-            }
-
+            s.isPassed(o.getCourse());
             // check if student passed all prerequisites
             List<Course> prereqs = o.getCourse().getPrerequisites();
             nextPre:
