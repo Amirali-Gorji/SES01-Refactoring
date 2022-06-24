@@ -9,8 +9,6 @@ public class Term {
 	private String name;
 	private Date startDate;
 
-	private ArrayList<CSE> courses;
-
 	public Term(String name) {
 		this.name = name;
 		this.startDate = null;
