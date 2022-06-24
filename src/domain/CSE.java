@@ -39,7 +39,7 @@ public class CSE {
 	public int getSection() { return section; }
 
 	public boolean hasTimeConflict(CSE other){
-		if (this.equals(other)) {
+		if (this == other) {
 			return false;
 		} else {
 			return this.getExamTime().equals(other.getExamTime());
