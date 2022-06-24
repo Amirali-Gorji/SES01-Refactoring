@@ -16,15 +16,10 @@ public class EnrollCtrl {
             }
             // check if student passed all prerequisites
             List<Course> prereqs = o.getCourse().getPrerequisites();
-            nextPre:
             for (Course pre : prereqs) {
-                for (Map.Entry<Term, Map<Course, Double>> tr : transcript.entrySet()) {
-                    for (Map.Entry<Course, Double> r : tr.getValue().entrySet()) {
-                        if (r.getKey().equals(pre) && s.isPassed(tr.getKey(), r.getKey()))
-                            continue nextPre;
-                    }
+                if (!s.isPassed(pre)) {
+                    throw new EnrollmentRulesViolationException(String.format("The student has not passed %s as a prerequisite of %s", pre.getName(), o.getCourse().getName()));
                 }
-                throw new EnrollmentRulesViolationException(String.format("The student has not passed %s as a prerequisite of %s", pre.getName(), o.getCourse().getName()));
             }
 
             // check if the course has exam time conflict with other course
