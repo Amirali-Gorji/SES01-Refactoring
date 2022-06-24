@@ -45,4 +45,12 @@ public class CSE {
 			return this.getExamTime().equals(other.getExamTime());
 		}
 	}
+
+	public boolean hasCommonCourse(CSE other){
+		if (this == other){
+			return false;
+		} else {
+			return this.getCourse().equals(other.getCourse());
+		}
+	}
 }

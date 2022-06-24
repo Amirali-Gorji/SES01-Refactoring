@@ -25,11 +25,9 @@ public class EnrollCtrl {
             // check if the course has exam time conflict with other course
             // or taken twice at same time
             for (CSE o2 : courses) {
-                if (o == o2)
-                    continue;
                 if (o.hasTimeConflict(o2))
                     throw new EnrollmentRulesViolationException(String.format("Two offerings %s and %s have the same exam time", o, o2));
-                if (o.getCourse().equals(o2.getCourse()))
+                if (o.hasCommonCourse(o2))
                     throw new EnrollmentRulesViolationException(String.format("%s is requested to be taken twice", o.getCourse().getName()));
             }
         }
