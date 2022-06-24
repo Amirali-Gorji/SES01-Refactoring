@@ -55,4 +55,17 @@ public class Student {
 	public String toString() {
 		return name;
 	}
+
+	public double calculateGPA() {
+		double points = 0;
+		int totalUnits = 0;
+		for (Map.Entry<Term, Map<Course, Double>> tr : this.transcript.entrySet()) {
+			for (Map.Entry<Course, Double> r : tr.getValue().entrySet()) {
+				points += r.getValue() * r.getKey().getUnits();
+				totalUnits += r.getKey().getUnits();
+			}
+		}
+		double gpa = points / totalUnits;
+		return gpa;
+	}
 }
