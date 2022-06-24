@@ -44,9 +44,7 @@ public class EnrollCtrl {
         }
 
         // check gpa violations
-        int unitsRequested = 0;
-        for (CSE o : courses)
-            unitsRequested += o.getCourse().getUnits();
+        int unitsRequested = courses.stream().flatMapToInt(cse -> IntStream.of(cse.getCourse().getUnits())).sum();
         double gpa = s.calculateGPA();
         if ((gpa < 12 && unitsRequested > 14) ||
                 (gpa < 16 && unitsRequested > 16) ||
