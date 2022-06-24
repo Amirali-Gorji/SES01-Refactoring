@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Student {
+	private final float MINIMUM_SCORE = 10;
 	private String id;
 	private String name;
 
@@ -66,5 +67,10 @@ public class Student {
 			}
 		}
 		return points / totalUnits;
+	}
+
+	public boolean isPassed(Term term, Course course){
+		double grade = this.transcript.get(term).get(course);
+		return grade >= this.MINIMUM_SCORE;
 	}
 }
