@@ -65,7 +65,6 @@ public class Student {
 				totalUnits += r.getKey().getUnits();
 			}
 		}
-		double gpa = points / totalUnits;
-		return gpa;
+		return points / totalUnits;
 	}
 }
