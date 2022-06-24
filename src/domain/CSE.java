@@ -38,7 +38,7 @@ public class CSE {
 
 	public int getSection() { return section; }
 
-	public boolean hasConflict(CSE other){
+	public boolean hasTimeConflict(CSE other){
 		if (this.equals(other)) {
 			return false;
 		} else {
