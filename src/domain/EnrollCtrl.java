@@ -8,7 +8,6 @@ import java.util.stream.IntStream;
 
 public class EnrollCtrl {
     public void enroll(Student s, List<CSE> courses) throws EnrollmentRulesViolationException {
-        Map<Term, Map<Course, Double>> transcript = s.getTranscript();
         for (CSE o : courses) {
             // check if student passed the course
             if (s.isPassed(o.getCourse())){
