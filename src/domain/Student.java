@@ -21,6 +21,7 @@ public class Student {
     }
 	private Map<Term, Map<Course, Double>> transcript;
 	private List<CourseSection> currentTerm;
+	private Term cTerm;
 
 	public Student(String id, String name) {
 		this.id = id;
